@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvalonDI", "AvalonDI\AvalonDI.csproj", "{047868E6-20FF-4E9E-B3FD-2817904D919D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{10D27266-8C53-407D-8A92-B051B8CF0705}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvalonDITests", "AvalonDITests\AvalonDITests.csproj", "{78FB6217-4430-43D4-8901-993DADDFE6F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,10 @@ Global
 		{047868E6-20FF-4E9E-B3FD-2817904D919D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{047868E6-20FF-4E9E-B3FD-2817904D919D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{047868E6-20FF-4E9E-B3FD-2817904D919D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78FB6217-4430-43D4-8901-993DADDFE6F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78FB6217-4430-43D4-8901-993DADDFE6F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78FB6217-4430-43D4-8901-993DADDFE6F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78FB6217-4430-43D4-8901-993DADDFE6F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
