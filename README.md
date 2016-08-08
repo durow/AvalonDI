@@ -6,7 +6,7 @@ A DI Container for WPF!
 PM>Install-Package Ayx.AvalonDI
 ```
 
-##How to use
+##Wire/Bind dependency
 ```C
 public partial class App : Application
 {
@@ -32,4 +32,40 @@ public partial class App : Application
     }
 }
 ```
+##Inject from constructor
+```c
+public class TestOneViewModel:NotificationObject
+{
+    private ITestDataRepo _repo;
+    private ILogger _logger;
 
+    public TestOneViewModel(ITestDataRepo repo, ILogger logger)
+    {
+        _repo = repo;
+        _logger = logger;
+    }
+}
+```
+
+##Inject by "AutoInject" attribute
+```c
+public class TestOneViewModel:NotificationObject
+{
+    [AutoInject]
+    public ITestDataRepo Repo{get;set;}
+    
+    [AutoInject]
+    public ILogger Logger { get; set; }
+}
+```
+But I suggest use constructor.
+
+##Get a view
+```c
+public class TestOneViewModel:NotificationObject
+{
+    var view = App.DI.GetView<TestOneView>();
+}
+```
+The DataContext of view will set to instance of TestOneViewModel automatically.
+And the dependency of TestOneViewModel will be injected automatically.
