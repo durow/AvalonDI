@@ -1,0 +1,20 @@
+﻿<Window x:Class="WpfSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfSample" WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <DockPanel>
+        <WrapPanel DockPanel.Dock="Top">
+            <Button Content="Test1" Width="70"
+                    Command="{Binding CmdOpenTest1}"/>
+            <Button Content="Test2" Width="70"
+                    Command="{Binding CmdOpenTest2}"/>
+            <Button Content="ClearLog" Width="70"
+                    Command="{Binding CmdClearLog}"/>
+        </WrapPanel>
+        <ListBox ItemsSource="{Binding Logger.LogList}"/>
+    </DockPanel>
+</Window>

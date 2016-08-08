@@ -9,6 +9,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{10D2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvalonDITests", "AvalonDITests\AvalonDITests.csproj", "{78FB6217-4430-43D4-8901-993DADDFE6F5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{FFAAC125-1524-4459-9117-D230FA116CCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfSample", "WpfSample\WpfSample.csproj", "{F1EEDFC9-2E32-4405-92F3-9E01CF2E3C66}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,8 +27,15 @@ Global
 		{78FB6217-4430-43D4-8901-993DADDFE6F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78FB6217-4430-43D4-8901-993DADDFE6F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78FB6217-4430-43D4-8901-993DADDFE6F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1EEDFC9-2E32-4405-92F3-9E01CF2E3C66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1EEDFC9-2E32-4405-92F3-9E01CF2E3C66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1EEDFC9-2E32-4405-92F3-9E01CF2E3C66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1EEDFC9-2E32-4405-92F3-9E01CF2E3C66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F1EEDFC9-2E32-4405-92F3-9E01CF2E3C66} = {10D27266-8C53-407D-8A92-B051B8CF0705}
 	EndGlobalSection
 EndGlobal
