@@ -1,7 +1,7 @@
 # AvalonDI
 A simple DI Container for WPF!
 
-ViewModel's dependencies can be injected from constructor or by "AutoInject" attribute,just like controller in .NET Core MVC.
+ViewModel's dependencies can be injected from constructor or by "AutoInject" attribute,just like controllers in MVC.
 
 ##Install
 ```  
