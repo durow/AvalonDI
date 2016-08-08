@@ -1,5 +1,6 @@
 # AvalonDI
-A DI Container for WPF!
+A simple DI Container for WPF!
+ViewModel's dependencies can be injected from constructor or by attribute,just like controller in .NET Core MVC.
 
 ##Install
 ```  
@@ -69,3 +70,18 @@ public class TestOneViewModel:NotificationObject
 ```
 The DataContext of view will set to instance of TestOneViewModel automatically.
 And the dependency of TestOneViewModel will be injected automatically.
+
+##Get an object from DI container
+```c
+var o = App.DI.Get<T>();
+```
+All dependencies of T will be injected from DI automatically,although T does not in the container.
+
+##Use token to make a dependency unique
+```c
+App.DI.Wire<IService,ServiceA>("A");
+App.DI.Wire<IService,ServiceB>("B");
+
+var serviceA = App.DI.Get<IService>("A");
+var serviceB = App.DI.Get<IService>("B");
+```
