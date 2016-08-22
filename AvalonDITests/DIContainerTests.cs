@@ -14,7 +14,7 @@ namespace Ayx.AvalonDI.Tests
         [TestMethod()]
         public void WireTest()
         {
-            var di = new DIContainer();
+            var di = new AyxContainer();
             Assert.AreEqual(di.Count, 0);
             di.Wire<ITest, TestA>();
             Assert.AreEqual(di.Count, 1);
@@ -33,7 +33,7 @@ namespace Ayx.AvalonDI.Tests
         [TestMethod()]
         public void WireSingletonTest()
         {
-            var di = new DIContainer();
+            var di = new AyxContainer();
             var single = new TestA();
             di.WireSingleton(single);
             var actual = di.Get<TestA>();
@@ -53,7 +53,7 @@ namespace Ayx.AvalonDI.Tests
         [TestMethod()]
         public void WireVMTest()
         {
-            var di = new DIContainer();
+            var di = new AyxContainer();
             di.WireVM<TestView, TestViewModel>();
             var vm = di.GetVM<TestView>();
             Assert.AreEqual(vm.GetType(), typeof(TestViewModel));
@@ -68,7 +68,7 @@ namespace Ayx.AvalonDI.Tests
         [TestMethod]
         public void TokenTest()
         {
-            var di = new DIContainer();
+            var di = new AyxContainer();
             di.Wire<ITest, TestA>("a");
             di.Wire<ITest, TestB>("b");
 
@@ -84,7 +84,7 @@ namespace Ayx.AvalonDI.Tests
         [TestMethod]
         public void ConstructureInjectionTest()
         {
-            var di = new DIContainer();
+            var di = new AyxContainer();
             di.Wire<IComputer, AddComputer>();
             di.WireSingleton<Logger>();
 
@@ -101,7 +101,7 @@ namespace Ayx.AvalonDI.Tests
         [TestMethod]
         public void PropertyInjectTest()
         {
-            var di = new DIContainer();
+            var di = new AyxContainer();
             di.Wire<IComputer, AddComputer>();
             di.WireSingleton<Logger>();
 

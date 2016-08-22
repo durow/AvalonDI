@@ -13,28 +13,28 @@ using System.Windows;
 
 namespace Ayx.AvalonDI
 {
-    public class DIContainer
+    public class AyxContainer
     {
-        private static DIContainer _default;
-        public static DIContainer Default
+        private static AyxContainer _default;
+        public static AyxContainer Default
         {
             get
             {
                 if (_default == null)
-                    _default = new DIContainer();
+                    _default = new AyxContainer();
                 return _default;
             }
         }
 
-        public int Count { get { return injectInfoList.Count; } }
+        public int Count { get { return InjectList.Count; } }
 
-        private  List<InjectInfo> injectInfoList = new List<InjectInfo>();
+        public readonly  List<InjectInfo> InjectList = new List<InjectInfo>();
 
         public  void Wire<Tfrom,Tto>(string token = "", Func<object> createFunc=null) where Tto:Tfrom
         {
             CheckExist<Tfrom>(token);
 
-            injectInfoList.Add(
+            InjectList.Add(
                 new InjectInfo
                 {
                     From = typeof(Tfrom),
@@ -45,12 +45,8 @@ namespace Ayx.AvalonDI
                 });
         }
 
-        public void Wire<T>(string token = "", Func<object> createFunc = null)
+        public void Wire<T>(string token = "", Func<object> createFunc = null) where T:class
         {
-            var type = typeof(T);
-            if (type.IsAbstract || type.IsInterface)
-                throw new Exception("can't wire interface or abstraction!");
-
             CheckExist<T>(token);
 
             Wire<T, T>(token, createFunc);
@@ -60,7 +56,7 @@ namespace Ayx.AvalonDI
         {
             CheckExist<Tfrom>(token);
 
-            injectInfoList.Add(
+            InjectList.Add(
                  new InjectInfo
                  {
                      From = typeof(Tfrom),
@@ -71,17 +67,18 @@ namespace Ayx.AvalonDI
                  });
         }
 
-        public void WireSingleton<T>(string token = "", Func<object> createFunc = null)
+        public void WireSingleton<T>(string token = "", Func<object> createFunc = null) where T:class
         {
             CheckExist<T>(token);
 
             WireSingleton<T, T>();
         }
-        public void WireSingleton<Tfrom>(Tfrom instance, string token = "")
+
+        public void WireSingleton<Tfrom>(Tfrom instance, string token = "") where Tfrom : class
         {
             CheckExist<Tfrom>(token);
 
-            injectInfoList.Add(
+            InjectList.Add(
                  new InjectInfo
                  {
                      From = typeof(Tfrom),
@@ -89,22 +86,6 @@ namespace Ayx.AvalonDI
                      InjectType = InjectType.Singleton,
                      instance = instance,
                      Token = token,
-                 });
-        }
-
-        public void WireVM<TView, TViewModel>(string token = "", Func<object> createFunc = null)
-            where TView : FrameworkElement where TViewModel : INotifyPropertyChanged
-        {
-            CheckExist<TView>(token);
-
-            injectInfoList.Add(
-                 new InjectInfo
-                 {
-                     From = typeof(TView),
-                     To = typeof(TViewModel),
-                     InjectType = InjectType.ViewModel,
-                     Token = token,
-                     CreateFunction = createFunc,
                  });
         }
 
@@ -126,29 +107,17 @@ namespace Ayx.AvalonDI
             return result;
         }
 
-        public object GetVM<TView>(string token = "")
-        {
-            return Get(typeof(TView), token);
-        }
-
-        public T GetView<T>(string token="") where T : FrameworkElement
-        {
-            var result = Activator.CreateInstance<T>();
-            result.DataContext = GetVM<T>(token);
-            return result;
-        }
-
         public void Remove<T>(string token = "")
         {
             var find = false;
             var type = typeof(T);
-            for (int i = 0; i < injectInfoList.Count; i++)
+            for (int i = 0; i < InjectList.Count; i++)
             {
-                var item = injectInfoList[i];
+                var item = InjectList[i];
                 if(CheckEqual(item,type,token))
                 {
                     find = true;
-                    injectInfoList.Remove(item);
+                    InjectList.Remove(item);
                     break;
                 }
             }
@@ -170,7 +139,7 @@ namespace Ayx.AvalonDI
 
         private InjectInfo GetInjectionInfo(Type type, string token = "")
         {
-            var result = injectInfoList.Where(p => p.From == type);
+            var result = InjectList.Where(p => p.From == type);
             if (!string.IsNullOrEmpty(token))
             {
                 result = result.Where(p => p.Token == token);

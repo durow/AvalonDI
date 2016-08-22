@@ -16,7 +16,7 @@ namespace WpfSample
     public partial class App : Application
     {
         //DI container
-        public static DIContainer DI = new DIContainer();
+        public static AyxContainer DI = new AyxContainer();
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
