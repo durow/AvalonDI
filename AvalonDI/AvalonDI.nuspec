@@ -9,7 +9,7 @@
     <projectUrl>https://github.com/durow/AvalonDI</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>First release of AvalonDI.</releaseNotes>
+    <releaseNotes>Update to support 3rd part DI container.</releaseNotes>
     <copyright>Copyright@ durow 2016</copyright>
     <tags>WPF DI</tags>
   </metadata>

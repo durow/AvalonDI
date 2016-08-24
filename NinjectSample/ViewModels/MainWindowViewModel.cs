@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WpfSample.Infrastructure;
+using NinjectSample.Infrastructure;
 using Ayx.AvalonDI;
-using WpfSample.Views;
+using NinjectSample.Views;
 
-namespace WpfSample.ViewModels
+namespace NinjectSample.ViewModels
 {
     public class MainWindowViewModel:NotificationObject
     {

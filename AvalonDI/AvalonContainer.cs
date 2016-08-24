@@ -33,6 +33,7 @@ namespace Ayx.AvalonDI
         {
             if (container == null)
                 throw new NullReferenceException("container can't be null!");
+            Container = container;
         }
 
         public T Get<T>(string token = "")

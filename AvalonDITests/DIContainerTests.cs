@@ -53,7 +53,7 @@ namespace Ayx.AvalonDI.Tests
         [TestMethod()]
         public void WireVMTest()
         {
-            var di = new AyxContainer();
+            var di = AvalonContainer.Default;
             di.WireVM<TestView, TestViewModel>();
             var vm = di.GetVM<TestView>();
             Assert.AreEqual(vm.GetType(), typeof(TestViewModel));
