@@ -75,13 +75,38 @@ And the dependency of TestOneViewModel will be injected automatically.
 
 ##Use 3rd part DI container eg.Ninject
 ```C#
+public partial class App : Application
+    {
+        //View and ViewModel container
+        public static AvalonContainer VM;
+        //Ninject container
+        public static StandardKernel Ninject;
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            InitDependency();
+            VM.GetView<MainWindow>()?.Show();
+        }
+
+        private void InitDependency()
+        {
+            Ninject = new StandardKernel();
+            Ninject.Bind<ITestDataRepo>().To<TestDataRepo>().InSingletonScope();
+            Ninject.Bind<ILogger>().To<SimpleLogger>().InSingletonScope();
+            
+            VM = new AvalonContainer(new NinjectContainer(Ninject));
+            VM.WireVM<MainWindow, MainWindowViewModel>();
+            VM.WireVM<TestOneView, TestOneViewModel>();
+        }
+    }
 ```
+See NinjectSample for detail.
 
-##Use token to make a dependency unique
+##Use token to make a View and ViewModel unique
 ```C#
-App.DI.Wire<IService,ServiceA>("A");
-App.DI.Wire<IService,ServiceB>("B");
+VM.Wire<ViewA,ViewModelA>("A");
+VM.Wire<ViewA,ViewModelAA>("AA");
 
-var serviceA = App.DI.Get<IService>("A");
-var serviceB = App.DI.Get<IService>("B");
+var viewA = VM.GetView<ViewA>("A");   //view with DataContext ViewModelA
+var viewAA = VM.GetView<ViewA>("AA"); //view with DataContext ViewModelAA
 ```
