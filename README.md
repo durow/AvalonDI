@@ -73,7 +73,7 @@ The DataContext of view will set to instance of TestOneViewModel automatically.
 
 And the dependency of TestOneViewModel will be injected automatically.
 
-##Use 3rd part DI container eg.Ninject
+##Use 3rd part DI container e.g Ninject
 ```C#
 public partial class App : Application
     {
