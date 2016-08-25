@@ -12,8 +12,10 @@ PM>Install-Package Ayx.AvalonDI
 ```C#
 public partial class App : Application
 {
-    //DI container
-    public static DIContainer DI = new DIContainer();
+    //DI Container
+    public static AyxContainer Container = new AyxContainer();
+    //View container
+    public static AvalonContainer VM;
 
     private void Application_Startup(object sender, StartupEventArgs e)
     {
@@ -25,12 +27,13 @@ public partial class App : Application
     private void WireDependency()
     {
         //dependency
-        DI.Wire<ITestDataRepo, TestDataRepo>();
-        DI.WireSingleton<ILogger, SimpleLogger>();
+        Container.Wire<ITestDataRepo, TestDataRepo>();
+        Container.WireSingleton<ILogger, SimpleLogger>();
 
         //view and viewmodel
-        DI.WireVM<MainWindow, MainWindowViewModel>();
-        DI.WireVM<TestOneView, TestOneViewModel>();
+        VM = new AvalonContainer(new DefaultContainer(Container));
+        VM.WireVM<MainWindow, MainWindowViewModel>();
+        VM.WireVM<TestOneView, TestOneViewModel>();
     }
 }
 ```
@@ -60,24 +63,19 @@ public class TestOneViewModel:NotificationObject
     public ILogger Logger { get; set; }
 }
 ```
-But I suggest use constructor.
+But I suggest use constructor to inject.
 
 ##Get a view
 ```C#
-public class TestOneViewModel:NotificationObject
-{
-    var view = App.DI.GetView<TestOneView>();
-}
+var view = App.VM.GetView<TestOneView>();
 ```
 The DataContext of view will set to instance of TestOneViewModel automatically.
 
 And the dependency of TestOneViewModel will be injected automatically.
 
-##Get an object from DI container
+##Use 3rd part DI container eg.Ninject
 ```C#
-var o = App.DI.Get<T>();
 ```
-All dependencies of T will be injected from DI automatically,although T does not in the container.
 
 ##Use token to make a dependency unique
 ```C#
