@@ -15,8 +15,6 @@ namespace WpfSample.ViewModels
     {
         private ITestDataRepo _repo;
         private ILogger _logger;
-        private ObservableCollection<TestData> _DataList;
-        private TestData _SelectedData;
 
         public TestOneViewModel(ITestDataRepo repo, ILogger logger)
         {
@@ -25,6 +23,7 @@ namespace WpfSample.ViewModels
             _logger?.ToConsole("Test1 view opened!");
         }
 
+        private TestData _SelectedData;
         public TestData SelectedData
         {
             get { return _SelectedData; }
@@ -38,6 +37,7 @@ namespace WpfSample.ViewModels
             }
         }
 
+        private ObservableCollection<TestData> _DataList;
         public ObservableCollection<TestData> DataList
         {
             get { return _DataList; }

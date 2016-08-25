@@ -1,11 +1,5 @@
 ﻿using Ayx.CSLibrary.MVVM;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NinjectSample.Infrastructure;
-using Ayx.AvalonDI;
 using NinjectSample.Views;
 
 namespace NinjectSample.ViewModels
@@ -36,8 +30,8 @@ namespace NinjectSample.ViewModels
                     o =>
                     {
                         Logger?.ToConsole("Try to open test1 view!");
-                        var view = App.VM.GetView<TestOneView>();
-                        view?.ShowDialog();
+                        //显示窗口
+                        App.VM.GetView<TestOneView>()?.ShowDialog();
                         Logger?.ToConsole("Test1 view closed!");
                     });
                 return _CmdOpenTest1;

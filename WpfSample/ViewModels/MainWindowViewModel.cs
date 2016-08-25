@@ -36,8 +36,10 @@ namespace WpfSample.ViewModels
                     o =>
                     {
                         Logger?.ToConsole("Try to open test1 view!");
-                        var view = App.VM.GetView<TestOneView>();
-                        view?.ShowDialog();
+
+                        //获取View，设置了ViewModel并注入了ViewModel的依赖
+                        App.VM.GetView<TestOneView>()?.ShowDialog();
+
                         Logger?.ToConsole("Test1 view closed!");
                     });
                 return _CmdOpenTest1;

@@ -1,9 +1,6 @@
 ﻿using Ayx.AvalonDI;
 using Ninject;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace NinjectSample.Infrastructure
 {
@@ -13,6 +10,9 @@ namespace NinjectSample.Infrastructure
 
         public NinjectContainer(StandardKernel container)
         {
+            if (container == null)
+                throw new NullReferenceException("container can't be null!");
+
             Container = container;
         }
         public object Get(Type type, string token = "")
@@ -22,7 +22,7 @@ namespace NinjectSample.Infrastructure
 
         public void Wire<T>(string token = "") where T : class
         {
-            Container.Bind<T>().ToSelf();
+            //do nothing
         }
     }
 }
