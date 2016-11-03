@@ -46,12 +46,16 @@
     <Compile Include="AvalonContainer.cs" />
     <Compile Include="Container\AyxContainer.cs" />
     <Compile Include="Container\DefaultContainer.cs" />
+    <Compile Include="Container\VMContainer.cs" />
     <Compile Include="Helper\AttributeHelper.cs" />
     <Compile Include="Abstraction\IContainer.cs" />
     <Compile Include="Internal\InjectInfo.cs" />
     <Compile Include="Internal\InjectType.cs" />
+    <Compile Include="Abstraction\IServiceLocator.cs" />
+    <Compile Include="Abstraction\IVMContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Internal\ViewModelInfo.cs" />
+    <Compile Include="ServiceLocatorBase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

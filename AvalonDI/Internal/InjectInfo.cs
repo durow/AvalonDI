@@ -2,6 +2,7 @@
  * Author:durow
  * Description:Record the inject information
 */
+
 using System;
 
 namespace Ayx.AvalonDI
